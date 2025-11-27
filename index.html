@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Riscaldamento Globale — Riflettere per Cambiare</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="title">Riscaldamento <span>Globale</span></h1>
+      <p class="subtitle">Capire l'impatto oggi per cambiare il domani</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#why">Scopri</a>
+        <a class="btn ghost" href="#beforeafter">Prima / Dopo</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="floating-earth"></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="why" class="container section reveal">
+      <h2>Perché riflettere sul riscaldamento globale?</h2>
+      <p class="lead">Il riscaldamento globale non è solo un concetto scientifico: cambia il paesaggio, il clima, la vita quotidiana
+      di persone e animali. Capire le cause e vedere le conseguenze ci aiuta a prendere decisioni migliori, anche a livello locale.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Cause</h3>
+          <p>Emissioni di gas serra (CO₂, metano), deforestazione, uso intensivo di combustibili fossili.</p>
+        </article>
+        <article class="card">
+          <h3>Conseguenze</h3>
+          <p>Innesto di eventi meteo estremi, innalzamento del livello del mare, perdita di biodiversità.</p>
+        </article>
+        <article class="card">
+          <h3>Soluzioni</h3>
+          <p>Efficienza energetica, energie rinnovabili, riforestazione e riduzione degli sprechi.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="beforeafter" class="container section reveal">
+      <h2>Prima / Dopo — Vedere per credere</h2>
+      <p class="lead">Sposta il cursore o usa i pulsanti per confrontare una visione "prima" e "dopo". Le immagini sono illustrative.</p>
+
+      <div class="before-after-wrap">
+        <div class="buttons">
+          <button id="btn-before" class="btn small active">PRIMA</button>
+          <button id="btn-after" class="btn small">DOPO</button>
+        </div>
+
+        <div class="ba-slider" id="ba-slider" aria-label="Confronto immagini prima e dopo">
+          <img src="images/before.svg" alt="Terra - Prima" class="ba-image ba-image-before">
+          <img src="images/after.svg" alt="Terra - Dopo" class="ba-image ba-image-after">
+          <div class="ba-handle" id="ba-handle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <span class="handle-line"></span>
+            <span class="handle-dot"></span>
+          </div>
+        </div>
+        <p class="caption">Tip: trascina il cerchio o clicca i pulsanti per vedere la differenza.</p>
+      </div>
+    </section>
+
+    <section id="data" class="container section reveal">
+      <h2>Dati essenziali</h2>
+      <ul class="data-list">
+        <li><strong>+1.1°C</strong> — incremento medio globale dalla rivoluzione industriale (dato illustrativo).</li>
+        <li><strong>Eventi estremi</strong> più frequenti e intensi (ondate di calore, inondazioni).</li>
+        <li><strong>Impatto sociale</strong>: migrazioni forzate, danni economici, perdita di habitat.</li>
+      </ul>
+      <p class="note">Nelle fonti da consegnare in classe inserisci dati aggiornati (IPCC, NOAA, NASA, ecc.).</p>
+    </section>
+
+    <section id="conclusion" class="container section reveal">
+      <h2>Riflessione finale</h2>
+      <p>Il cambiamento climatico è un problema collettivo e richiede scelte individuali e politiche. Anche piccoli cambiamenti (risparmio energetico, riduzione degli sprechi, informazione) contribuiscono.</p>
+      <div class="share-row">
+        <a class="btn primary" href="#beforeafter">Mostra il prima/dopo</a>
+        <a class="btn ghost" href="#why">Rileggi le cause</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Progetto scolastico — Presentazione su Riscaldamento Globale • Creato da <strong>Tuo Nome</strong></p>
+    <p class="small">Per pubblicare: carica questi file su <strong>GitHub Pages</strong> (repo: tuonome.github.io) o su <strong>Neocities</strong>.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
