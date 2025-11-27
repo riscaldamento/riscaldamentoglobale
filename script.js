@@ -1,56 +1,48 @@
-// --- SCROLL REVEAL EFFECT ---
-const reveals = document.querySelectorAll('.reveal');
+// script.js — scroll reveal, smooth scroll, small accessibility helpers
 
-function revealOnScroll() {
-  for (let i = 0; i < reveals.length; i++) {
-    const windowHeight = window.innerHeight;
-    const elementTop = reveals[i].getBoundingClientRect().top;
-    const elementVisible = 150;
-
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add('active');
-    }
-  }
-}
-
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
-
-
-
-// --- BEFORE / AFTER SLIDER LOGIC ---
-const beforeBtn = document.getElementById("beforeBtn");
-const afterBtn = document.getElementById("afterBtn");
-const beforeImg = document.getElementById("beforeImg");
-const afterImg = document.getElementById("afterImg");
-
-beforeBtn.addEventListener("click", () => {
-  beforeImg.style.opacity = 1;
-  afterImg.style.opacity = 0;
-});
-
-afterBtn.addEventListener("click", () => {
-  beforeImg.style.opacity = 0;
-  afterImg.style.opacity = 1;
-});
-
-
-
-// --- SMOOTH SCROLL FOR NAV LINKS ---
-const links = document.querySelectorAll("a[href^='#']");
-
-links.forEach(link => {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    target.scrollIntoView({ behavior: "smooth" });
+document.addEventListener('DOMContentLoaded', function () {
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const targetSelector = this.getAttribute('href');
+      if (!targetSelector || targetSelector === '#') return;
+      const target = document.querySelector(targetSelector);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
+
+  // IntersectionObserver for reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => io.observe(r));
+  } else {
+    // fallback: simple timeout reveal
+    reveals.forEach((r, i) => setTimeout(() => r.classList.add('visible'), 150 * i));
+  }
+
+  // small keyboard helper: focus outlines for .btn
+  document.querySelectorAll('.btn').forEach(b => {
+    b.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.target.click();
+      }
+    });
+  });
+
+  // make sure hero text animates on load
+  window.setTimeout(() => {
+    const h = document.querySelector('.hero-title');
+    const s = document.querySelector('.hero-subtitle');
+    if (h) h.style.transform = 'translateY(0)';
+    if (s) s.style.opacity = '1';
+  }, 120);
 });
-
-
-
-// --- HERO TEXT FADE-IN ---
-window.onload = () => {
-  document.querySelector(".hero-title").classList.add("show");
-  document.querySelector(".hero-subtitle").classList.add("show");
-};
